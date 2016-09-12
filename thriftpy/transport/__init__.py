@@ -64,6 +64,7 @@ if CYTHON:
     from .buffered import TCyBufferedTransport, TCyBufferedTransportFactory
     from .framed import TCyFramedTransport, TCyFramedTransportFactory
     from .memory import TCyMemoryBuffer
+    from .cybase import CyTransportBase
 
     # enable cython binary by default for CPython.
     TMemoryBuffer = TCyMemoryBuffer  # noqa
@@ -71,6 +72,7 @@ if CYTHON:
     TBufferedTransportFactory = TCyBufferedTransportFactory  # noqa
     TFramedTransport = TCyFramedTransport  # noqa
     TFramedTransportFactory = TCyFramedTransportFactory  # noqa
+    TTransportBase = CyTransportBase  # noqa
 else:
     # disable cython binary protocol for PYPY since it's slower.
     TCyMemoryBuffer = TMemoryBuffer
@@ -78,6 +80,7 @@ else:
     TCyBufferedTransportFactory = TBufferedTransportFactory
     TCyFramedTransport = TFramedTransport
     TCyFramedTransportFactory = TFramedTransportFactory
+    CyTransportBase = TTransportBase
 
 __all__ = [
     "TSocket", "TServerSocket",
